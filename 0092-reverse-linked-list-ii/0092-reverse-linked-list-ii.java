@@ -14,20 +14,20 @@ class Solution {
             return head;
         }
 
-        // Dummy node to simplify edge cases where left = 1
+        // Dummy node simplifies edge cases where reversing starts at the head (left = 1)
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode prev = dummy;
 
-        // Step 1: Reach the node just before the 'left' position
+        // 1. Move `prev` to the node right before position `left`
         for (int i = 0; i < left - 1; i++) {
             prev = prev.next;
         }
 
-        // 'curr' will be the first node of the sublist to be reversed
+        // `curr` points to the first node of the sublist to be reversed
         ListNode curr = prev.next;
 
-        // Step 2: Reverse nodes between 'left' and 'right' positions
+        // 2. Reverse nodes between `left` and `right` in-place
         for (int i = 0; i < right - left; i++) {
             ListNode temp = curr.next;
             curr.next = temp.next;
